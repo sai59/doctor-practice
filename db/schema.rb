@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150905035159) do
+ActiveRecord::Schema.define(version: 20150905082847) do
 
   create_table "appointments", force: :cascade do |t|
     t.date     "visit"
@@ -62,6 +62,13 @@ ActiveRecord::Schema.define(version: 20150905035159) do
     t.datetime "updated_at",                                      null: false
     t.string   "role",                   limit: 255
     t.string   "type",                   limit: 255
+    t.string   "name",                   limit: 255
+    t.string   "address",                limit: 255
+    t.string   "city",                   limit: 255
+    t.string   "state",                  limit: 255
+    t.string   "zip",                    limit: 255
+    t.string   "school",                 limit: 255
+    t.integer  "practiceyears",          limit: 4
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
