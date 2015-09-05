@@ -1,0 +1,3 @@
+class Practitioner < user
+
+end
