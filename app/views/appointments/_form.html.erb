@@ -21,7 +21,11 @@
   </div>
   <div class="field">
     <%= f.label :customer_id %><br>
-    <%= f.number_field :customer_id %>
+    <%= f.select :customer_id, @customers.all.collect {|p| [ p.email, p.id ] }, { include_blank: true } %>
+  </div>
+  <div class="field">
+    <%= f.label :doctor_id %><br>
+    <%= f.select :doctor_id, @doctors.all.collect {|p| [ p.email, p.id ] }, { include_blank: true } %>
   </div>
   <div class="field">
     <%= f.label :reminder %><br>

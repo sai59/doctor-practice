@@ -1,5 +1,6 @@
 class AppointmentsController < ApplicationController
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /appointments
   # GET /appointments.json
@@ -15,10 +16,14 @@ class AppointmentsController < ApplicationController
   # GET /appointments/new
   def new
     @appointment = Appointment.new
+    @doctors = User.where(role: 'doctor')
+    @customers = User.where(role: 'customer')
   end
 
   # GET /appointments/1/edit
   def edit
+    @doctors = User.where(role: 'doctor')
+    @customers = User.where(role: 'customer')
   end
 
   # POST /appointments
@@ -69,6 +74,6 @@ class AppointmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def appointment_params
-      params.require(:appointment).permit(:visit, :pet_id, :customer_id, :reminder, :reason)
+      params.require(:appointment).permit(:visit, :pet_id, :customer_id, :reminder, :reason, :doctor_id)
     end
 end
